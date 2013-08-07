@@ -1,0 +1,6 @@
+test_homepage:
+    pattern:  /
+    defaults: { _controller: TestBundle:Test:index }
+test_test:
+    pattern:  /test
+    defaults: { _controller: TestBundle:Test:test }

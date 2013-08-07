@@ -1,13 +1,22 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+    <link href="{{ asset('css/style.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('js/jquery-ui-1.10.3.custom/css/ui-darkness/jquery-ui-1.10.3.custom.css') }}" type="text/css" rel="stylesheet" />
+        {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <script src="{{ asset('js/jquery-2.0.3.js') }}"></script>
+    <script src="{{ asset('js/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.js') }}"></script>
+  </head>
+  <body>
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+      <script src="{{ asset('js/jquery-2.0.3.js') }}"></script>
+      <script src="{{ asset('js/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.js') }}"></script>
+      <script src="{{ asset('js/scripts.js') }}"></script>
+{% endblock %}
     </body>
-</html>
+  </html>

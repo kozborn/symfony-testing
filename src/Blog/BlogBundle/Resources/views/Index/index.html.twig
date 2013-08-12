@@ -3,128 +3,22 @@
 {% block title %}Blog -> pk-dev.pl{% endblock %}
 {% block body %}
 <ul id="item-list">
-  <li>
-    <div class="item-content">
-       <div class="item-image">
-         <img src="{{ asset('images/image1.jpg') }}" width="100" height="100" alt=""/>
-       </div>
-       <span class="item-title">Lorem ipsum</span>
-       <span class="item-short">Jakiś tam przykładowy content</span>
-    </div>
-  </li>
-  <li>
-    <div class="item-content">
-       <div class="item-image">
-         <img src="{{ asset('images/image2.jpg') }}" width="100" height="100" alt=""/>
-       </div>
-       <span class="item-title">Lorem ipsum</span>
-       <span class="item-short">Jakiś tam przykładowy content</span>
-    </div>
-  </li>
-  <li>
-    <div class="item-content">
-       <span class="item-title">Lorem ipsum</span>
-       <span class="item-short">Jakiś tam przykładowy content</span>
-    </div>
-  </li>
-  <li>
-    <div class="item-content">
-       <div class="item-image">
-         <img src="{{ asset('images/image1.jpg') }}" width="100" height="100" alt=""/>
-       </div>
-       <span class="item-title">Lorem ipsum</span>
-       <span class="item-short">Jakiś tam przykładowy content</span>
-    </div>
-  </li>
-  <li>
-    <div class="item-content">
-       <div class="item-image">
-         <img src="{{ asset('images/image2.jpg') }}" width="100" height="100" alt=""/>
-       </div>
-       <span class="item-title">Lorem ipsum</span>
-       <span class="item-short">Jakiś tam przykładowy content</span>
-    </div>
-  </li>
-  <li>
-    <div class="item-content">
-       <div class="item-image">
-         <img src="{{ asset('images/image2.jpg') }}" width="100" height="100" alt=""/>
-       </div>
-       <span class="item-title">Lorem ipsum</span>
-       <span class="item-short">Jakiś tam przykładowy content</span>
-    </div>
-  </li>
-  <li>
-    <div class="item-content">
-       <div class="item-image">
-         <img src="{{ asset('images/image2.jpg') }}" width="100" height="100" alt=""/>
-       </div>
-       <span class="item-title">Lorem ipsum</span>
-       <span class="item-short">Jakiś tam przykładowy content</span>
-    </div>
-  </li>
-  <li>
-    <div class="item-content">
-       <div class="item-image">
-         <img src="{{ asset('images/image1.jpg') }}" width="100" height="100" alt=""/>
-       </div>
-       <span class="item-title">Lorem ipsum</span>
-       <span class="item-short">Jakiś tam przykładowy content</span>
-    </div>
-  </li>
-  <li>
-    <div class="item-content">
-       <div class="item-image">
-         <img src="{{ asset('images/image2.jpg') }}" width="100" height="100" alt=""/>
-       </div>
-       <span class="item-title">Lorem ipsum</span>
-       <span class="item-short">Jakiś tam przykładowy content</span>
-    </div>
-  </li>
-  <li>
-    <div class="item-content">
-       <div class="item-image">
-         <img src="{{ asset('images/image1.jpg') }}" width="100" height="100" alt=""/>
-       </div>
-       <span class="item-title">Lorem ipsum</span>
-       <span class="item-short">Jakiś tam przykładowy content</span>
-    </div>
-  </li>
-  <li>
-    <div class="item-content">
-       <div class="item-image">
-         <img src="{{ asset('images/image1.jpg') }}" width="100" height="100" alt=""/>
-       </div>
-       <span class="item-title">Lorem ipsum</span>
-       <span class="item-short">Jakiś tam przykładowy content</span>
-    </div>
-  </li>
-  <li>
-    <div class="item-content">
-       <div class="item-image">
-         <img src="{{ asset('images/image2.jpg') }}" width="100" height="100" alt=""/>
-       </div>
-       <span class="item-title">Lorem ipsum</span>
-       <span class="item-short">Jakiś tam przykładowy content</span>
-    </div>
-  </li>
-  <li>
-    <div class="item-content">
-       <div class="item-image">
-         <img src="{{ asset('images/image1.jpg') }}" width="100" height="100" alt=""/>
-       </div>
-       <span class="item-title">Lorem ipsum</span>
-       <span class="item-short">Jakiś tam przykładowy content</span>
-    </div>
-  </li>
-  <li>
-    <div class="item-content">
-       <div class="item-image">
-         <img src="{{ asset('images/image2.jpg') }}" width="100" height="100" alt=""/>
-       </div>
-       <span class="item-title">Lorem ipsum</span>
-       <span class="item-short">Jakiś tam przykładowy content</span>
-    </div>
-  </li>
-</ul>
+  {% for article in blogArticles %}
+    <li>
+      <div class="item-content">
+        <div class="item-image">
+          {% if article.image %}
+            <a href="{{ path('blog_show_article', { 'id': article.id }) }}">
+              <img src="{{ asset(['images/',article.image]|join) }}" width="100" height="100" alt=""/>
+            </a>   
+            {% endif %}
+          </div>
+          <a href="{{ path('blog_show_article', { 'id': article.id }) }}">
+            <span class="item-title">{{article.title}}</span>
+            <span class="item-short">{{ article.content(75) }}</span>
+          </a>
+        </div>
+      </li>
+  {% endfor %}
+    </ul>
 {% endblock %}

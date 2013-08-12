@@ -1,3 +1,16 @@
 blog_homepage:
-    pattern:  /blog/index
+    pattern:  /
     defaults: { _controller: BlogBundle:Index:index }
+    
+blog_show_article:
+    pattern:  /{id}
+    defaults: { _controller: BlogBundle:Index:show }
+    requirements:
+        _method:  GET
+        id: \d+
+blog_comment_create:
+    pattern:  /comment/{article_id}
+    defaults: { _controller: BlogBundle:Comment:create }
+    requirements:
+        _method:  POST
+        article_id: \d+

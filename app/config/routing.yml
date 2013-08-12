@@ -1,6 +1,10 @@
+main_page:
+    resource: "@MainPageBundle/Resources/config/routing.yml"
+    prefix:   /
+
 blog:
     resource: "@BlogBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /blog/
 
 test:
     resource: "@TestBundle/Resources/config/routing.yml"

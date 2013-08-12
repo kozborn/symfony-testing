@@ -1,0 +1,31 @@
+{# src/Blog/BlogBundle/Resources/views/Page/index.html.twig #}
+{% extends 'BlogBundle::layout.html.twig' %}
+{% block title %}{{ blogArticle.title }} -> Blog -> pk-dev.pl{% endblock %}
+{% block body %}
+<article class="blog article">
+  <header>
+    <div class="date"><time datetime="{{ blogArticle.created|date('c') }}">{{ blogArticle.created|date('l, F j, Y') }}</time></div>
+    <h2 class="blog title">{{ blogArticle.title }}</h2>
+  </header>
+    {% if blogArticle.image%}
+  <img src="{{ asset(['images/', blogArticle.image]|join) }}" alt="{{ blogArticle.title }} image not found" class="blog large" />
+  {% endif %}
+  <div>
+    <p>{{ blogArticle.content }}</p>
+  </div>
+  <div class="clear"></div>
+  
+    <section class="comments" id="comments">
+        <h3>Add Comment</h3>
+        {% render 'BlogBundle:Comment:new' with { 'article_id': blogArticle.id } %}
+    </section>
+  
+   <section class="comments" id="comments">
+        <section class="previous-comments">
+            <h3>Komentarze:</h3>
+            {% include 'BlogBundle:Comment:index.html.twig' with { 'comments': comments } %}
+        </section>
+    </section>
+  
+</article>
+{% endblock %}

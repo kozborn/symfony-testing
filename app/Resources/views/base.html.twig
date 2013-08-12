@@ -12,11 +12,30 @@
     <script src="{{ asset('js/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.js') }}"></script>
   </head>
   <body>
-        {% block body %}{% endblock %}
+    <nav id="menu">
+      <ul>
+        <li>
+          <a href="{{path('main_page_homepage')}}">Strona główna</a>
+        </li>
+        <li>
+          <a href="{{path('blog_homepage')}}">Blog</a>
+        </li>
+        <li>
+          <a href="{{path('blog_homepage')}}">Realizacje</a>
+        </li>
+        <li>
+          <a href="{{path('blog_homepage')}}">Kontakt</a>
+        </li>
+      </ul>
+      <div class="clear"></div>
+    </nav>
+        {% block body %}
+
+        {% endblock %}
         {% block javascripts %}
-      <script src="{{ asset('js/jquery-2.0.3.js') }}"></script>
-      <script src="{{ asset('js/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.js') }}"></script>
-      <script src="{{ asset('js/scripts.js') }}"></script>
+    <script src="{{ asset('js/jquery-2.0.3.js') }}"></script>
+    <script src="{{ asset('js/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.js') }}"></script>
+    <script src="{{ asset('js/scripts.js') }}"></script>
 {% endblock %}
-    </body>
-  </html>
+  </body>
+</html>
